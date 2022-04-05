@@ -1,23 +1,27 @@
 import { getTrendingMovies } from "../../services/API";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./TrendingMovies.module.css";
 
 export default function TrendingMovies() {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getTrendingMovies().then((res) => {
+      setMovies(res.data.results);
+    });
+  }, []);
+  console.log(movies);
 
-  // getTrendingMovies().then((res) => {
-  //     const Movies = res.data.hits.map(
-  //       ({ id, title }) => {
-  //         return { id, title };
-  //       }
-  //     )});
-  // if (NewImages.length === 0) {
-  //   setLoading(false);
-  //   return toast.error("There is no picture with that name!");
-  // }
-
-  // setImages((prevImages) => [...prevImages, ...NewImages]);
-  // setLoading(false);
-  return <ul></ul>;
+  return (
+    <ul>
+      {movies.map((movie) => {
+        return (
+          <li key={movie.id}>
+            <Link to="/">{movie.title}</Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
 }

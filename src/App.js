@@ -3,6 +3,7 @@ import AppBar from "./components/AppBar/AppBar";
 import HomeView from "./views/HomeView";
 import MoviesView from "./views/MoviesView";
 import NotFoundView from "./views/NotFoundView";
+import MovieInfoView from "./views/MovieInfoView";
 import styles from "./App.module.css";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<HomeView />} />
         <Route path="/movies" element={<MoviesView />} />
         <Route path="*" element={<NotFoundView />} />
+        <Route path="/:movieId" element={<MovieInfoView />} />
       </Routes>
     </div>
   );

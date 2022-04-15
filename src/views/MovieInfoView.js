@@ -18,6 +18,7 @@ export default function MovieInfoView() {
     getMovieItem(movieId).then((data) => {
       const {
         data: {
+          id,
           poster_path,
           release_date,
           title,
@@ -29,6 +30,7 @@ export default function MovieInfoView() {
       } = data;
 
       setMovie({
+        id,
         poster_path,
         release_date,
         title,
@@ -71,13 +73,13 @@ export default function MovieInfoView() {
           <h2>Genres</h2>
           <p>{movie.genresValues}</p>
           <h3>Additional information</h3>
-          <NavLink to="/movies/:movieId/cast">Cast</NavLink>
-          <NavLink to="/movies/:movieId/reviews">Reviews</NavLink>
+          <NavLink to={`/movies/${movie.id}/cast`}>Cast</NavLink>
+          <NavLink to={`/movies/${movie.id}/reviews`}>Reviews</NavLink>
         </>
       )}
       <Routes>
-        <Route path="/movies/:movieId/cast" element={<CastView />} />
-        <Route path="/movies/:movieId/reviews" element={<ReviewsView />} />
+        <Route path="cast" element={<CastView />} />
+        <Route path="reviews" element={<ReviewsView />} />
       </Routes>
     </>
   );

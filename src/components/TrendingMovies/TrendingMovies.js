@@ -19,7 +19,7 @@ export default function TrendingMovies() {
       {movies.map((movie) => {
         return (
           <li key={movie.id}>
-            <Link to={`/${movie.id}`}>{movie.title}</Link>
+            <Link to={`movies/${movie.id}`}>{movie.title}</Link>
           </li>
         );
       })}

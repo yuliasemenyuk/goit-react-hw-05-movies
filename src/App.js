@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" element={<HomeView />} />
         <Route path="/movies" element={<MoviesView />} />
         <Route path="*" element={<NotFoundView />} />
-        <Route path="/:movieId" element={<MovieInfoView />} />
+        <Route path="/movies/:movieId/*" element={<MovieInfoView />} />
       </Routes>
     </div>
   );

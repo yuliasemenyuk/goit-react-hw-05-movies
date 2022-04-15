@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Routes, Route, useParams, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getMovieItem } from "../services/API";
+import CastView from "./CastView";
+import ReviewsView from "./ReviewsView";
 
 export default function MovieInfoView() {
   const { movieId } = useParams();
@@ -54,18 +56,29 @@ export default function MovieInfoView() {
 
   return (
     <>
-      <h1>
-        {movie.title} ({movie.release_date.slice(0, 4)})
-      </h1>
-      <img src={movie.poster_path} alt={movie.name}></img>
-      <p>User score: {movie.vote_average}</p>
-      <h2>Overview</h2>
-      <p>{movie.overview}</p>
-      <h2>Genres</h2>
-      <p>{movie.genresValues}</p>
-      <h3>Additional information</h3>
-      <Link to="/">Cast</Link>
-      <Link to="">Reviews</Link>
+      {movie && (
+        <>
+          <h1>
+            {movie.title} ({movie.release_date.slice(0, 4)})
+          </h1>
+          <img
+            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+            alt={movie.title}
+          ></img>
+          <p>User score: {movie.vote_average}</p>
+          <h2>Overview</h2>
+          <p>{movie.overview}</p>
+          <h2>Genres</h2>
+          <p>{movie.genresValues}</p>
+          <h3>Additional information</h3>
+          <NavLink to="/movies/:movieId/cast">Cast</NavLink>
+          <NavLink to="/movies/:movieId/reviews">Reviews</NavLink>
+        </>
+      )}
+      <Routes>
+        <Route path="/movies/:movieId/cast" element={<CastView />} />
+        <Route path="/movies/:movieId/reviews" element={<ReviewsView />} />
+      </Routes>
     </>
   );
 }

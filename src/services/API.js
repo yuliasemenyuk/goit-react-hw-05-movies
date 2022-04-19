@@ -27,7 +27,11 @@ export async function getMovieCast(movieId) {
   );
 }
 
-// serchMovie
+export async function searchMovie(searchQuery) {
+  return await axios.get(
+    `${BASE_URL}search/movie?api_key=${KEY}&query=${searchQuery}`
+  );
+}
 
 // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
 

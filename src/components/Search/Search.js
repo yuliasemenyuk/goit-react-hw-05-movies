@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { searchMovie } from "../services/API";
-import { Link } from "react-router-dom";
+// import { searchMovie } from "../../services/API"
 
-export default function MoviesView() {
+export default function SearchBar({ onSubmit }) {
   const [serchQuery, setSearchQuery] = useState("");
-  const [movies, setMovies] = useState(null);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
@@ -19,18 +17,10 @@ export default function MoviesView() {
       return;
     }
 
-    searchMovie(serchQuery).then((res) => {
-      setMovies(res.data.results);
-    });
+    onSubmit(serchQuery);
     setSearchQuery("");
-    console.log(searchMovie(serchQuery));
+    // console.log(searchMovie(serchQuery));
   };
-
-  // const gettingMoviesList = () => {
-  //   useEffect(() => {
-
-  //   },[movies])
-  // }
 
   return (
     <>
@@ -46,19 +36,6 @@ export default function MoviesView() {
         />
         <button type="submit">Search</button>
       </form>
-
-      {movies && (
-        <ul>
-          {" "}
-          {movies.map((movie) => {
-            return (
-              <li key={movie.id}>
-                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </>
   );
 }

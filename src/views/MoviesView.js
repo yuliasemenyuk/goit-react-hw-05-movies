@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { searchMovie } from "../services/API";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function MoviesView() {
   const [serchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  console.log(navigate);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
@@ -22,15 +27,11 @@ export default function MoviesView() {
     searchMovie(serchQuery).then((res) => {
       setMovies(res.data.results);
     });
+
+    navigate({ ...location, search: `query=${serchQuery}` });
+
     setSearchQuery("");
-    console.log(searchMovie(serchQuery));
   };
-
-  // const gettingMoviesList = () => {
-  //   useEffect(() => {
-
-  //   },[movies])
-  // }
 
   return (
     <>
@@ -49,7 +50,6 @@ export default function MoviesView() {
 
       {movies && (
         <ul>
-          {" "}
           {movies.map((movie) => {
             return (
               <li key={movie.id}>

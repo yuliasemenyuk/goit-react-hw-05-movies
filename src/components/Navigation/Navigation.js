@@ -23,11 +23,3 @@ const Navigation = () => (
 );
 
 export default Navigation;
-
-// <NavLink
-//         to="/some-page"
-//         className={({ isActive }) =>
-//                       (isActive ? "lactive-class" : "not-active-class")}
-// >
-//         Some Page
-// </NavLink>

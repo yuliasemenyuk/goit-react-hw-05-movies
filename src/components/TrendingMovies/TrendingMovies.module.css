@@ -1,0 +1,17 @@
+.movie_item {
+  margin-bottom: 8px;
+  list-style: none;
+  font-weight: 500;
+}
+.movie_item:last-child {
+  margin-bottom: 0px;
+}
+.movie_item_link {
+  text-decoration: none;
+  color: #000000;
+}
+.movie_item_link:hover,
+.movie_item_link:focus {
+  color: rgb(5, 5, 211);
+  text-decoration: underline;
+}

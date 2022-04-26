@@ -12,8 +12,8 @@ export default function CastView() {
     });
   }, []);
 
-  console.log(getMovieCast(movieId));
-  console.log(cast);
+  // console.log(getMovieCast(movieId));
+  // console.log(cast);
 
   return (
     <>

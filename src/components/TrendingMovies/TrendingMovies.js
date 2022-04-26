@@ -4,7 +4,6 @@ import { Link, useRouteMatch } from "react-router-dom";
 import styles from "./TrendingMovies.module.css";
 
 export default function TrendingMovies() {
-  // const {url} = useRouteMatch();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,8 +17,10 @@ export default function TrendingMovies() {
     <ul>
       {movies.map((movie) => {
         return (
-          <li key={movie.id}>
-            <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+          <li key={movie.id} className={styles.movie_item}>
+            <Link to={`movies/${movie.id}`} className={styles.movie_item_link}>
+              {movie.title}
+            </Link>
           </li>
         );
       })}

@@ -10,7 +10,7 @@ export default function MoviesView() {
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
-  console.log(navigate);
+  // console.log(navigate);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
@@ -53,7 +53,9 @@ export default function MoviesView() {
           {movies.map((movie) => {
             return (
               <li key={movie.id}>
-                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+                <Link to={`${location.pathname}/${movie.id}`}>
+                  {movie.title}
+                </Link>
               </li>
             );
           })}

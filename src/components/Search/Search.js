@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import styles from "./Search.module.css";
 // import { searchMovie } from "../../services/API"
 
-export default function SearchBar({ onSubmit }) {
+export default function Search({ onSubmit }) {
   const [serchQuery, setSearchQuery] = useState("");
 
   const handleChange = (e) => {
@@ -34,7 +35,9 @@ export default function SearchBar({ onSubmit }) {
           autoFocus
           placeholder="type to search movies..."
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles.search_btn}>
+          Search
+        </button>
       </form>
     </>
   );

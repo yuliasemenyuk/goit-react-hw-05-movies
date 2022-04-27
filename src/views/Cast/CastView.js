@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieCast } from "../services/API";
+import { getMovieCast } from "../../services/API";
+import styles from "./CastView.module.css";
 
 export default function CastView() {
   const [cast, setCast] = useState(null);
@@ -18,16 +19,17 @@ export default function CastView() {
   return (
     <>
       {cast && (
-        <ul>
+        <ul className={styles.cast_list}>
           {cast.map((character) => {
             return (
-              <li key={character.id}>
+              <li key={character.id} className={styles.cast_item}>
                 <img
                   src={`https://image.tmdb.org/t/p/w92${character.profile_path}`}
                   alt={character.name}
+                  className={styles.cast_image}
                 />
-                <p>{character.character}</p>
-                <p>{character.name}</p>
+                <p className={styles.cast_character}>{character.character}</p>
+                <p className={styles.cast_actor}>{character.name}</p>
               </li>
             );
           })}

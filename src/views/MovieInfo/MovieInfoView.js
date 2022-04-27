@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useParams, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getMovieItem } from "../services/API";
-import CastView from "./CastView";
-import ReviewsView from "./ReviewsView";
+import { getMovieItem } from "../../services/API";
+import CastView from "../Cast/CastView";
+import ReviewsView from "../Reviews/ReviewsView";
+import styles from "./MovieInfoView.module.css";
 
 export default function MovieInfoView() {
   const { movieId } = useParams();
@@ -68,13 +69,23 @@ export default function MovieInfoView() {
             alt={movie.title}
           ></img>
           <p>User score: {movie.vote_average}</p>
-          <h2>Overview</h2>
+          <h2 className={styles.base_info_title}>Overview</h2>
           <p>{movie.overview}</p>
-          <h2>Genres</h2>
+          <h2 className={styles.base_info_title}>Genres</h2>
           <p>{movie.genresValues}</p>
-          <h3>Additional information</h3>
-          <NavLink to={`/movies/${movie.id}/cast`}>Cast</NavLink>
-          <NavLink to={`/movies/${movie.id}/reviews`}>Reviews</NavLink>
+          <h3 className={styles.details_title}>Additional information</h3>
+          <NavLink
+            to={`/movies/${movie.id}/cast`}
+            className={styles.deteils_links}
+          >
+            Cast
+          </NavLink>
+          <NavLink
+            to={`/movies/${movie.id}/reviews`}
+            className={styles.deteils_links}
+          >
+            Reviews
+          </NavLink>
         </>
       )}
       <Routes>

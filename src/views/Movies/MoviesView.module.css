@@ -1,0 +1,20 @@
+.search_form {
+  margin-top: 15px;
+}
+.search_btn {
+  margin-left: 10px;
+  min-height: 25px;
+  cursor: pointer;
+  border-radius: 4px;
+  border-width: 1px;
+}
+.search_btn:hover,
+.search_btn:focus {
+  background-color: rgb(8, 8, 241);
+  border-color: rgb(0, 0, 139);
+  color: rgb(252, 248, 232);
+}
+.search_input {
+  min-height: 20px;
+  min-width: 200px;
+}

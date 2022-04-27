@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { searchMovie } from "../services/API";
+import { searchMovie } from "../../services/API";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import styles from "./MoviesView.module.css";
 
 export default function MoviesView() {
   const [serchQuery, setSearchQuery] = useState("");
@@ -9,7 +10,7 @@ export default function MoviesView() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   // console.log(navigate);
 
   const handleChange = (e) => {
@@ -20,8 +21,7 @@ export default function MoviesView() {
     e.preventDefault();
 
     if (serchQuery.trim() === "") {
-      toast.error("Search field can`t be empty!");
-      return;
+      return toast.error("Search field can't be empty!");
     }
 
     searchMovie(serchQuery).then((res) => {
@@ -35,8 +35,9 @@ export default function MoviesView() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.search_form}>
         <input
+          className={styles.search_input}
           onChange={handleChange}
           value={serchQuery}
           name="query"
@@ -45,7 +46,9 @@ export default function MoviesView() {
           autoFocus
           placeholder="type to search movies..."
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles.search_btn}>
+          Search
+        </button>
       </form>
 
       {movies && (

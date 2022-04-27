@@ -1,17 +1,23 @@
-.movie_item {
+.trending_movies_list {
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+.trending_movie_item {
   margin-bottom: 8px;
   list-style: none;
   font-weight: 500;
 }
-.movie_item:last-child {
+.trending_movie_item:last-child {
   margin-bottom: 0px;
 }
-.movie_item_link {
+.trending_movie_item_link {
   text-decoration: none;
   color: #000000;
 }
-.movie_item_link:hover,
-.movie_item_link:focus {
+.trending_movie_item_link:hover,
+.trending_movie_item_link:focus {
   color: rgb(5, 5, 211);
   text-decoration: underline;
 }

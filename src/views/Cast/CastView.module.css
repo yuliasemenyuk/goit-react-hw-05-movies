@@ -1,0 +1,27 @@
+.cast_list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-inline-start: 0;
+}
+.cast_item {
+  flex-basis: calc((100% - 20px) / 4);
+  /* margin-bottom: 10px; */
+  text-align: center;
+}
+.cast_item:nth-last-child(-n + 4) {
+  margin-bottom: 0;
+}
+.cast_image {
+}
+.cast_character {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+.cast_actor {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

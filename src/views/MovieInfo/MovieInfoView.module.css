@@ -1,0 +1,20 @@
+.base_info_title {
+  font-size: 30px;
+}
+.details_title {
+  font-size: 24px;
+}
+.deteils_links {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  font-size: 20px;
+}
+.deteils_links:first-of-type {
+  margin-right: 15px;
+}
+.deteils_links:focus,
+.deteils_links:hover {
+  color: rgb(12, 12, 231);
+  font-weight: 700;
+}

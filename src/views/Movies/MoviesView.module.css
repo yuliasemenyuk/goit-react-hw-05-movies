@@ -1,5 +1,7 @@
 .search_form {
   margin-top: 15px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 .search_btn {
   margin-left: 10px;
@@ -17,4 +19,28 @@
 .search_input {
   min-height: 20px;
   min-width: 200px;
+}
+
+.movies_list {
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+.movie_item {
+  margin-bottom: 8px;
+  list-style: none;
+  font-weight: 500;
+}
+.movie_item:last-child {
+  margin-bottom: 0px;
+}
+.movie_item_link {
+  text-decoration: none;
+  color: #000000;
+}
+.movie_item_link:hover,
+.movie_item_link:focus {
+  color: rgb(5, 5, 211);
+  text-decoration: underline;
 }

@@ -52,11 +52,14 @@ export default function MoviesView() {
       </form>
 
       {movies && (
-        <ul>
+        <ul className={styles.movies_list}>
           {movies.map((movie) => {
             return (
-              <li key={movie.id}>
-                <Link to={`${location.pathname}/${movie.id}`}>
+              <li key={movie.id} className={styles.movie_item}>
+                <Link
+                  to={`${location.pathname}/${movie.id}`}
+                  className={styles.movie_item_link}
+                >
                   {movie.title}
                 </Link>
               </li>

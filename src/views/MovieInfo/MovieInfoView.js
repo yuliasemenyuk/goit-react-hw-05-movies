@@ -1,21 +1,19 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useParams, NavLink } from "react-router-dom";
+import { Routes, Route, useParams, NavLink, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getMovieItem } from "../../services/API";
 import CastView from "../Cast/CastView";
 import ReviewsView from "../Reviews/ReviewsView";
+import ArrowBack from "../../components/ArrowBack/ArrowBack";
+
 import styles from "./MovieInfoView.module.css";
 
 export default function MovieInfoView() {
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // setLoad(true);
-
     getMovieItem(movieId).then((data) => {
       const {
         data: {
@@ -44,21 +42,17 @@ export default function MovieInfoView() {
             : genres.map(({ name }) => [name]).join(", "),
       });
     });
-    //   .catch((error) => {
-    //     return toast.error("There is no movie on this page!");
-    //   })
-    //   .finally(() =>
-    //     setTimeout(() => {
-    //       setLoad(false);
-    //     }, 1000)
-    //   );
   }, [movieId]);
 
-  console.log(movie);
-  console.log(movieId);
+  // console.log(movie);
+  // console.log(movieId);
 
   return (
     <>
+      <Link to="/">
+        <ArrowBack />
+        Back
+      </Link>
       {movie && (
         <>
           <h1>

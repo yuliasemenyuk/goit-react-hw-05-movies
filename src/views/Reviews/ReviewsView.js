@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../services/API";
+import styles from "./ReviewsView.module.css";
 
 export default function ReviewsView() {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -15,24 +16,19 @@ export default function ReviewsView() {
   // console.log(getMovieReviews(movieId));
   // console.log(reviews);
 
-  return (
-    <>
-      {
-        reviews && (
-          <ul>
-            {reviews.map((review) => {
-              return (
-                <li key={review.id}>
-                  <h3>{review.author}</h3>
-                  <span>{review.created_at.slice(0, 10)}</span>
-                  <p>{review.content}</p>
-                </li>
-              );
-            })}
-          </ul>
-        )
-        // <p>There are no reviews for this film</p>
-      }
-    </>
-  );
+  if (reviews)
+    return (
+      <ul className={styles.review_list}>
+        {reviews.map((review) => {
+          return (
+            <li key={review.id} className={styles.review_item}>
+              <h3>{review.author}</h3>
+              <span>{review.created_at.slice(0, 10)}</span>
+              <p>{review.content}</p>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  return <p>There are no reviews for this film</p>;
 }

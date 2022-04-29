@@ -18,3 +18,11 @@
   color: rgb(12, 12, 231);
   font-weight: 700;
 }
+.back_btn {
+  border: none;
+  background-color: transparent;
+}
+.back_btn:focus,
+.back_btn:hover {
+  color: rgb(12, 12, 231);
+}

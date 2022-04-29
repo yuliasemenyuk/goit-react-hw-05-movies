@@ -15,20 +15,23 @@ export default function ReviewsView() {
 
   // console.log(getMovieReviews(movieId));
   // console.log(reviews);
-
-  if (reviews)
-    return (
-      <ul className={styles.review_list}>
-        {reviews.map((review) => {
-          return (
-            <li key={review.id} className={styles.review_item}>
-              <h3>{review.author}</h3>
-              <span>{review.created_at.slice(0, 10)}</span>
-              <p>{review.content}</p>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  return <p>There are no reviews for this film</p>;
+  return (
+    <>
+      {reviews.length === 0 ? (
+        <p>There are no reviews for this film</p>
+      ) : (
+        <ul className={styles.review_list}>
+          {reviews.map((review) => {
+            return (
+              <li key={review.id} className={styles.review_item}>
+                <h3>{review.author}</h3>
+                <span>{review.created_at.slice(0, 10)}</span>
+                <p>{review.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
+  );
 }

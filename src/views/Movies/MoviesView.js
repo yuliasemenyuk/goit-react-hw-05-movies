@@ -7,6 +7,7 @@ import styles from "./MoviesView.module.css";
 export default function MoviesView() {
   const [serchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState(null);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,8 +25,16 @@ export default function MoviesView() {
       return toast.error("Search field can't be empty!");
     }
 
-    searchMovie(serchQuery).then((res) => {
-      setMovies(res.data.results);
+    searchMovie(serchQuery).then((data) => {
+      const {
+        data: { results },
+      } = data;
+      if (results.length === 0) {
+        return toast.error(
+          "Sorry, there are no movies. Try another request..."
+        );
+      }
+      setMovies(results);
     });
 
     navigate({ ...location, search: `query=${serchQuery}` });

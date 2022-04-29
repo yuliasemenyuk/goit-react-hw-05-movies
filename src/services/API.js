@@ -32,9 +32,3 @@ export async function searchMovie(searchQuery) {
     `${BASE_URL}search/movie?api_key=${KEY}&query=${searchQuery}`
   );
 }
-
-// https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
-
-// // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
-
-// https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1

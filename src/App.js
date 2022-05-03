@@ -1,24 +1,27 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import AppBar from "./components/AppBar/AppBar";
-import HomeView from "./views/Home/HomeView";
-import MoviesView from "./views/Movies/MoviesView";
-import NotFoundView from "./views/NotFound/NotFoundView";
-import MovieInfoView from "./views/MovieInfo/MovieInfoView";
 import styles from "./App.module.css";
 import "react-toastify/dist/ReactToastify.css";
+
+const HomeView = lazy(() => import("./views/Home/HomeView"));
+const MoviesView = lazy(() => import("./views/Movies/MoviesView"));
+const NotFoundView = lazy(() => import("./views/NotFound/NotFoundView"));
+const MovieInfoView = lazy(() => import("./views/MovieInfo/MovieInfoView"));
 
 export default function App() {
   return (
     <div className={styles.App}>
       <AppBar />
-
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/movies" element={<MoviesView />} />
-        <Route path="*" element={<NotFoundView />} />
-        <Route path="/movies/:movieId/*" element={<MovieInfoView />} />
-      </Routes>
+      <Suspense fallback={<h1>LOADING...</h1>}>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/movies" element={<MoviesView />} />
+          <Route path="*" element={<NotFoundView />} />
+          <Route path="/movies/:movieId/*" element={<MovieInfoView />} />
+        </Routes>
+      </Suspense>
       <ToastContainer autoClose={2000} />
     </div>
   );

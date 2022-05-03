@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { searchMovie } from "../../services/API";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import styles from "./MoviesView.module.css";
 
 export default function MoviesView() {
-  const [serchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState(null);
-  const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
+
   const location = useLocation();
   // console.log(location);
-  // console.log(navigate);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
@@ -21,26 +21,30 @@ export default function MoviesView() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (serchQuery.trim() === "") {
+    if (searchQuery.trim() === "") {
       return toast.error("Search field can't be empty!");
     }
 
-    searchMovie(serchQuery).then((data) => {
-      const {
-        data: { results },
-      } = data;
-      if (results.length === 0) {
-        return toast.error(
-          "Sorry, there are no movies. Try another request..."
-        );
-      }
-      setMovies(results);
-    });
-
-    navigate({ ...location, search: `query=${serchQuery}` });
+    setSearchParams({ query: searchQuery });
 
     setSearchQuery("");
   };
+
+  useEffect(() => {
+    if (query) {
+      searchMovie(query).then((data) => {
+        const {
+          data: { results },
+        } = data;
+        if (results.length === 0) {
+          return toast.error(
+            "Sorry, there are no movies. Try another request..."
+          );
+        }
+        setMovies(results);
+      });
+    }
+  }, [query]);
 
   return (
     <>
@@ -48,7 +52,7 @@ export default function MoviesView() {
         <input
           className={styles.search_input}
           onChange={handleChange}
-          value={serchQuery}
+          value={searchQuery}
           name="query"
           type="text"
           autoComplete="off"
@@ -66,7 +70,8 @@ export default function MoviesView() {
             return (
               <li key={movie.id} className={styles.movie_item}>
                 <Link
-                  to={`${location.pathname}/${movie.id}`}
+                  to={`/movies/${movie.id}`}
+                  state={{ from: location }}
                   className={styles.movie_item_link}
                 >
                   {movie.title}

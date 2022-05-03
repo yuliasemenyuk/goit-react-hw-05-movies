@@ -11,7 +11,7 @@ export default function TrendingMovies() {
       setMovies(res.data.results);
     });
   }, []);
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <ul className={styles.trending_movies_list}>

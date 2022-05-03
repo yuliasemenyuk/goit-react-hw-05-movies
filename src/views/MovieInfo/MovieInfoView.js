@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Routes,
   Route,
   useParams,
   NavLink,
   useNavigate,
+  useLocation,
+  Link,
 } from "react-router-dom";
 import { getMovieItem } from "../../services/API";
 import CastView from "../Cast/CastView";
@@ -14,7 +16,9 @@ import styles from "./MovieInfoView.module.css";
 export default function MovieInfoView() {
   const { movieId } = useParams();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const location = useLocation();
+  const backPage = useRef(location);
 
   const [movie, setMovie] = useState(null);
 
@@ -54,9 +58,13 @@ export default function MovieInfoView() {
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className={styles.back_btn}>
+      <Link
+        to={location?.state?.from ?? `/`}
+        // state={{ from: backPage.current }}>
+      >
+        {" "}
         &#8592; Go back
-      </button>
+      </Link>
 
       {movie && (
         <>

@@ -9,9 +9,10 @@
   color: #000000;
   font-weight: 500;
   font-size: 20px;
-}
-.deteils_links:first-of-type {
   margin-right: 15px;
+}
+.deteils_links:last-of-type {
+  margin-right: 0px;
 }
 .deteils_links:focus,
 .deteils_links:hover {

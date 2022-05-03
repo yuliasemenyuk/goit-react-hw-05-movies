@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/498.0a3d5706.chunk.css","mappings":"AAAA,qCACE,iBACF","sources":["views/NotFound/NotFoundView.module.css"],"sourcesContent":[".not_found_title {\n  text-align: center;\n}\n"],"names":[],"sourceRoot":""}

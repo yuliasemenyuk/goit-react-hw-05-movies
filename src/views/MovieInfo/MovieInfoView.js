@@ -4,7 +4,6 @@ import {
   Route,
   useParams,
   NavLink,
-  useNavigate,
   useLocation,
   Link,
 } from "react-router-dom";
@@ -16,7 +15,6 @@ import styles from "./MovieInfoView.module.css";
 export default function MovieInfoView() {
   const { movieId } = useParams();
 
-  // const navigate = useNavigate();
   const location = useLocation();
   const backPage = useRef(location);
 
@@ -60,7 +58,7 @@ export default function MovieInfoView() {
     <>
       <Link
         to={location?.state?.from ?? `/`}
-        // state={{ from: backPage.current }}>
+        state={{ from: backPage.current }}
       >
         {" "}
         &#8592; Go back

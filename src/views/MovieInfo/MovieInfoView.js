@@ -16,7 +16,7 @@ export default function MovieInfoView() {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const backPage = useRef(location);
+  const grandPath = useRef(location);
 
   const [movie, setMovie] = useState(null);
 
@@ -57,8 +57,8 @@ export default function MovieInfoView() {
   return (
     <>
       <Link
-        to={location?.state?.from ?? `/`}
-        state={{ from: backPage.current }}
+        to={grandPath.current?.state?.from ?? `/`}
+        state={{ from: grandPath.current }}
       >
         {" "}
         &#8592; Go back
@@ -89,13 +89,15 @@ export default function MovieInfoView() {
           <p>{movie.genresValues}</p>
           <h3 className={styles.details_title}>Additional information</h3>
           <NavLink
-            to={`/movies/${movie.id}/cast`}
+            to={`/movies/${movieId}/cast`}
+            state={{ from: grandPath.current }}
             className={styles.deteils_links}
           >
             Cast
           </NavLink>
           <NavLink
-            to={`/movies/${movie.id}/reviews`}
+            to={`/movies/${movieId}/reviews`}
+            state={{ from: grandPath.current }}
             className={styles.deteils_links}
           >
             Reviews

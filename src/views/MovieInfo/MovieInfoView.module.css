@@ -16,14 +16,25 @@
 }
 .deteils_links:focus,
 .deteils_links:hover {
-  color: rgb(12, 12, 231);
+  color: rgb(170, 16, 16);
   font-weight: 700;
 }
 .back_btn {
-  border: none;
-  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  max-width: fit-content;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #9f9f9f;
+  border-radius: 3px;
+  color: black;
 }
 .back_btn:focus,
 .back_btn:hover {
-  color: rgb(12, 12, 231);
+  box-shadow: 1px 1px 2px 1px rgba(59, 59, 59, 0.462);
+  color: rgb(170, 16, 16);
 }

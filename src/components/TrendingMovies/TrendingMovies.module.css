@@ -18,6 +18,6 @@
 }
 .trending_movie_item_link:hover,
 .trending_movie_item_link:focus {
-  color: rgb(5, 5, 211);
-  text-decoration: underline;
+  color: rgb(170, 16, 16);
+  text-decoration: none;
 }

@@ -51,14 +51,13 @@ export default function MovieInfoView() {
     });
     localStorage.setItem("movie", JSON.stringify(movie));
   }, [movieId]);
-  // conle.log(movie);
-  // console.log(movieId);
 
   return (
     <>
       <Link
         to={grandPath.current?.state?.from ?? `/`}
         state={{ from: grandPath.current }}
+        className={styles.back_btn}
       >
         {" "}
         &#8592; Go back

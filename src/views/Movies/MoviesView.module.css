@@ -9,18 +9,18 @@
   cursor: pointer;
   border-radius: 4px;
   border-width: 1px;
-}
-.search_btn:hover,
-.search_btn:focus {
-  background-color: rgb(8, 8, 241);
-  border-color: rgb(0, 0, 139);
+  background-color: rgba(170, 16, 16, 0.845);
+  border-color: rgb(57, 14, 14);
   color: rgb(252, 248, 232);
+}
+.search_btn:hover {
+  box-shadow: 1px 1px 2px 1px rgba(59, 59, 59, 0.462);
 }
 .search_input {
   min-height: 20px;
   min-width: 200px;
+  padding-left: 5px;
 }
-
 .movies_list {
   text-align: center;
   margin-block-start: 0;
@@ -41,6 +41,6 @@
 }
 .movie_item_link:hover,
 .movie_item_link:focus {
-  color: rgb(5, 5, 211);
+  color: rgb(170, 16, 16);
   text-decoration: underline;
 }
